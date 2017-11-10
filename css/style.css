@@ -15,6 +15,35 @@ h1{
 h2 {
     font-size: 30px
 }
+input{
+    border-radius: 16px;
+    height: 30px;
+    padding-left: 6px;
+    background-color: rgb(249, 249, 249);
+    border: 1px solid #2473af;
+    font-size: 13px;
+    margin: 2px;
+
+}
+
+label, p, legend{
+    font-size: 15px;
+    margin: 2px;
+}
+br{
+    width: 2px;
+}
+
+legend{
+   font-weight: bold;
+}
+.divForm{
+    padding: 5%;
+}
+.divseparadorForm{
+    padding: 1%;
+}
+
 .error{
     display:block;
     margin:auto;
@@ -27,7 +56,7 @@ pre {
     margin-bottom: 0;
     padding: 5px;
 }
-.button{
+.button {
     font-size: 14px;
     background: #2473af;
     color: #FFF;
@@ -71,35 +100,11 @@ nav{
     text-decoration: none;
     text-align: left;
 }
-.buscador{
-    margin-top: -33px;
-    float: right;
-    position: relative;
-    overflow: hidden;
-    width: 15%;
-    color: #000000;
-    font-size: 12px; 
-    font-weight: normal; 
-    font-style: normal; 
-    text-decoration: none; 
-    text-align: left; 
-    padding: 10px; 
-    background: #ffffff; 
-    border: 1px solid #000000; 
-    border-radius: 30px; 
-}
 
-.btnBuscardor {
-    position: absolute;
-    display: block;
-    width: 19px;
-    height: 19px;
-    top: 3px;
-    right: 4px;
-    text-indent: -1000em;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+.btnBuscador {
+    border-radius: 16px;
+    border: 1px solid #2473af;
+    height: 30px;
 }
 
 
@@ -159,4 +164,33 @@ a {
 
 a:active, a:hover {
     outline: 0
+}
+.tooltip{
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    box-sizing: border-box;
+    display: none;
+
+}
+.tooltip-mensaje{
+    max-width: 200px;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    background-color: #cc0000;
+    border-radius: 16px;
+}
+form{
+    display: block;
+}
+textarea{
+    border-radius: 16px;
+    padding-left: 6px;
+    background-color: rgb(249, 249, 249);
+    border: 1px solid #2473af;
+    font-size: 13px;
+    margin: 2px;
+    resize: none;
 }
