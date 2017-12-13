@@ -180,6 +180,7 @@ function validaEmail(email) {
 
 function validaRut(rut) {
     var rexp = new RegExp(/^([0-9])+\-([kK0-9])+$/);
+    
     if (rut.match(rexp)) {
         var RUT = rut.split("-");
         var elRut = RUT[0].split('');
