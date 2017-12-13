@@ -301,7 +301,7 @@ function validaMensaje(mensaje){
             document.getElementById("ttMensajeMensaje").innerHTML = "Debe ingresar texto en su mensaje";
             mostarTooltip("ttMensaje");
             return false;
-    } else if(!(mensaje.length >9 && mensaje.length < 500)){
+    } else if(!(mensaje.length >9 && mensaje.length < 501)){
         document.getElementById("ttMensajeMensaje").innerHTML = "Debe de escribir al menos 10 caracteres";
         mostarTooltip("ttMensaje");
     }else {

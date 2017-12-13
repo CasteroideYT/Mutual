@@ -3,23 +3,21 @@
 $rutCliente = $_POST["rutCliente"];
 $nombreCliente = $_POST["nombre"];
 $apellidoCliente = $_POST["apellido"];
-$sueldoCliente = $_POST["sueldoCliente"];
-$montoSolicitado = $_POST["montoSolicitado"];
-$cuotasCredito = $_POST["cuotasCredito"];
-$interes = $_POST["interes"];
+$fonoContacto = $_POST["fonoContacto"];
 $email = $_POST["email"];
+$mensajeConsulta = $_POSt["mensajeConsulta"]
 
-function recibeDatos(){
-
-	if(isset($_POST["rutCliente"], $_POST["nombre"], $_POST["apellido"], $_POST["sueldoCliente"], $_POST["montoSolicitado"],
-		$_POST["cuotasCredito"],$_POST["interes"], $_POST["email"];)) {
+function datosSimulacion(){
+	// Valida que se recibiento todos los campos
+	if(isset($_POST["rutCliente"], $_POST["nombre"], $_POST["apellido"],
+		$_POST["mensajeConsulta"], $_POST["email"];)) {
 		return true;
-}
+	}
 	return false;
 }
 
-
 function validaRut($rutCliente){
+	// Valida que el rut sea valido
 	if(strpos($rutCliente,"-")==false){
 		$RUT[0] = substr($rutCliente, 0, -1);
 		$RUT[1] = substr($rutCliente, -1);
@@ -49,6 +47,7 @@ function validaRut($rutCliente){
 }
 
 function validaNumero($numero){
+	// Valida que el campo se un numero entero
 	if(is_numeric($numero) && is_int($numero)){
 		if($numero > 0){
 			return true;
@@ -59,45 +58,58 @@ function validaNumero($numero){
 }
 
 function validaCorreo($email){
+	//valida que la informacion sea un email
 	if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 		return true;
 	}
 	return false;
 }
 
-function numeroCuotas($cuotasCredito){
-	if(validaNumero($cuotasCredito)){
-		if ($cuotasCredito >= 6 && $cuotasCredito <= 120 ) {
-			return true;
-		}
+function validaNoVacio ($input) {
+	//Valida que no este vacio el campo requiere variable a usar
+	$input = trim($input);
+
+	if($input == "") {
 		return false;
 	}
+
+		return true;
+}
+
+function validaSoloTexto ($varTexto) {
+	//Valida que el campo solo sean letras requiere variable a usar
+	if (validaNoVacio($varTexto)){
+		
+		if (preg_match("^[a-zA-Z\-]",$varTexto)){
+			return true;
+		}
+
+		return false;
+	}
+
 	return false
 }
 
-function interesPrestamo($interes){
-	if(validaNumero($interes)){
-		if ($cuotasCredito == 4) {
+function validaMensaje ($mensajeConsulta){
+	if (validaNoVacio($mensajeConsulta)){
+		if (strlen($mensajeConsulta)>8 && strlen($mensajeConsulta)<501) {
 			return true;
 		}
 		return false;
-
-		return false;
 	}
+	return false;
+}
 
-	function validaIngreso ($sueldoCliente){
-		if(validaNumero($montoSolicitado)){
-			if($montoSolicitado > 149999){
-				return true;
-			}
-			return false;
+function validaFono ($fonoContacto) {
+	// Valida el numero de telefono
+	if (validaNumero($fonoContacto)){
+		if (preg_match("^[2|345679][0-9]{8}$", $fonoContacto)){
+			return true;
 		}
 		return false;
 	}
-
-	function valida
-
-
-
+	return false;
+}
 
 	?>
+
