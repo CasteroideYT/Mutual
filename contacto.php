@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simulador de credito</title>
+    <title>Contacto</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
@@ -24,6 +24,14 @@
             <form action="mostrarmensaje.php" method="post" name="formContacto" onsubmit="return validaFormContacto()">
                 <fieldset class="divForm">
                     <legend>Datos Personales</legend>
+                    <label>Rut</label>
+                    <input type="text" placeholder="12.345.678-9" name="rutCliente">
+                    <div class="tooltip" id="ttRut">
+                        <span class="tooltip-mensaje" id="ttRutMensaje">
+                            Si lees esto, quiere decir que algo salio mal!
+                        </span>
+                    </div>
+                    <br>
                     <label>Nombre</label>
                     <input name="nombre">
                     <div class="tooltip" id="ttNombre">

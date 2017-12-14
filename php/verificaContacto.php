@@ -5,7 +5,7 @@ $nombreCliente = $_POST["nombre"];
 $apellidoCliente = $_POST["apellido"];
 $fonoContacto = $_POST["fonoContacto"];
 $email = $_POST["email"];
-$mensajeConsulta = $_POSt["mensajeConsulta"];
+$mensajeConsulta = $_POST["mensajeConsulta"];
 
 function datosContacto(){
 	// Valida que se recibiento todos los campos

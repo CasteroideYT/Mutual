@@ -25,6 +25,7 @@ function validaForm() {
 }
 
 function validaFormContacto() {
+    var rutCliente = document.forms["formContacto"]["rutCliente"].value;
     var nombreContacto = document.forms["formContacto"]["nombre"].value;
     var apellidoContacto = document.forms["formContacto"]["apellido"].value;
     var fonoContacto = document.forms["formContacto"]["fonoContacto"].value;
@@ -32,6 +33,7 @@ function validaFormContacto() {
     var mensajeConsulta = document.forms["formContacto"]["mensajeConsulta"].value;
 
     if(
+    validaRut(rutCliente)&&
     validaNombre(nombreContacto) &&
     validaApellido(apellidoContacto) &&
     validaEmail(emailContacto) &&

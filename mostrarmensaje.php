@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simulador de credito</title>
+    <title>Contacto</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
@@ -24,19 +24,18 @@
 		include "./php/verificaContacto.php";
 		include "./php/database.php";
 		include "./php/crudContactov2.php";
-		$fecha = getdate();
-
+		
 		if ( datosContacto() ) {
 			$rutCliente      = $_POST["rutCliente"];
 			$nombreCliente   = $_POST["nombre"];
 			$apellidoCliente = $_POST["apellido"];
-			$telefono        = $_POST["telefono"];
+			$fonoContacto    = $_POST["fonoContacto"];
 			$email           = $_POST["email"];
-			$mensaje         = $_POST["mensaje"];
-			if ( validaRut( $rutCliente ) && validaCorreo( $email ) && validaFono($telefono) &&
-			validaMensaje($mensaje)){
-			    creaCliente( $conexiondb, $rutCliente, $nombreCliente, $apellidoCliente, $email, $fono );
-			    creaContacto( $conexiondb, $rutCliente,$mensaje);
+			$mensajeConsulta = $_POST["mensajeConsulta"];
+			if ( validaRut( $rutCliente ) && validaCorreo( $email ) && validaFono($fonoContacto) &&
+			validaMensaje($mensajeConsulta)){
+			    creaCliente( $conexionDB, $rutCliente, $nombreCliente, $apellidoCliente, $email, $fono );
+			    creaContacto($conexionDB, $rutCliente,$mensajeConsulta);
 			    echo "<h2>Estimado(a) " . $nombreCliente . " " . $apellidoCliente . " Nos contactaremos a travez de su correo " . $email . "</h2>";
 		    } else {
 			?>

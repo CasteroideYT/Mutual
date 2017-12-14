@@ -23,8 +23,7 @@
 		include "./php/verificaSimulador.php";
         include "./php/database.php";
         include "./php/crudSimuladorv2.php";
-        $fecha=getdate();
-
+        
 		if ( datosSimulacion() ) {
 			$rutCliente      = $_POST["rutCliente"];
 			$nombreCliente   = $_POST["nombre"];
@@ -34,12 +33,13 @@
 			$cuotasCredito   = $_POST["cuotasCredito"];
 			$interes         = $_POST["interes"];
 			$email           = $_POST["email"];
-			$fono = 0;//TOdo cambiar esto
+			$fono=0;
+
+			//TOdo cambiar esto
  			//if ( validaRut( $rutCliente ) && validaCorreo( $email ) && numeroCuotas( $cuotasCredito ) && interesPrestamo( $interes )
 			  //   && validaIngreso( $sueldoCliente ) && validaMontoSolicitado( $montoSolicitado ) ) {
-			    creaCliente($conexiondb,$rutCliente,$nombreCliente,$apellidoCliente,$email,$fono);
-                crearSimulacion($conexiondb,$rutCliente,$montoSolicitado,$numeroCuotas,$interes,1,
-                0,0,$fecha);
+			    creaCliente($conexionDB,$rutCliente,$nombreCliente,$apellidoCliente,$email);
+                crearSimulacion($conexionDB,$sueldoCliente,$rutCliente,$montoSolicitado,$cuotasCredito,$interes,1,0,0);
 				echo "<h2>Estimado(a) " . $nombreCliente . " " . $apellidoCliente . " La informacion se envio a su correo " . $email . "</h2>";
 			} else {
 				?>

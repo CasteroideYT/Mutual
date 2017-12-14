@@ -1,7 +1,7 @@
 <?php
 	$dbhost = "localhost";
-	$dbusuario = "root";
-	$dbpassword = "";
+	$dbusuario = "mutual";
+	$dbpassword = "inacap.2017";
 	$db = "mutual";
 	$conexionDB =  new mysqli($dbhost, $dbusuario, $dbpassword, $db);
 	if ($conexionDB ->connect_errno){

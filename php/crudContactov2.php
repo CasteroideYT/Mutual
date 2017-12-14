@@ -1,31 +1,31 @@
 <?php
 
+	include "database.php";
 
-	$estadoContacto;
-	global $ingresoCliente;
-	$ingresoCliente = 0;
+	
 
 
 	// Funciones CRUD
 
-	function creaContacto($conexion, $rutCliente, $mensajeConsulta) {
-		$insertInto = "INSERT INTO Contactos(mensaje, estado, rutCliente)";
-		$sql = $insertInto." VALUES (".
-				"'".$mensajeConsulta."',".
-				"'Enviado',".
-				"'".$rutCliente."');";
-		$resultado = $conexion->query($sql);
+	function creaContacto($conexionDB, $rutCliente, $mensajeConsulta) {
+		$estadoContacto = "Enviado";
+		$insertInto = "INSERT INTO Contactos (mensaje, estado, rutCliente)";
+		$sql = $insertInto." VALUES ('"
+				   .$mensajeConsulta."','"
+				   .$estadoContacto."','"
+				   .$rutCliente."');";
+		$resultado = $conexionDB->query($sql);
 
 
 
 		return $resultado;
 	}
 
-	function actualizaEstado($conexion, $idContacto, $estadoContacto) {
+	function actualizaEstado($conexionDB, $idContacto, $estadoContacto) {
 		$update = "UPDATE Contactos SET ".
 		$sql = "estado = '".$estadoContacto."' ".
 		$where = "where idContacto = ".$idContacto."";
-		$resultado = $conexion->query($update.$sql.$where);
+		$resultado = $conexionDB->query($update.$sql.$where);
 		return $resultado;
 	}
 
@@ -36,20 +36,20 @@
 		return $datos;
 	} */
 
-	function creaCliente($conexion, $rutCliente, $nombreCliente, $apellidoCliente, $email, $fonoContacto){
+	function creaCliente($conexionDB, $rutCliente, $nombreCliente, $apellidoCliente, $email, $fonoContacto){
 
-		$insertInto = "INSERT INTO Clientes (rutCliente, nombreCliente, apellidoCliente, email, telefono, ingresoCliente)";
+		$insertInto = "INSERT INTO Clientes (rutCliente, nombreCliente, apellidoCliente, email, telefono)";
 		$sql = $insertInto." VALUES ('"
 				.$rutCliente."','"
 				.$nombreCliente."','"
 				.$apellidoCliente."','"
 				.$email."',"
 				.$fonoContacto.");";
-		$resultado = $conexion->query($sql);
+		$resultado = $conexionDB->query($sql);
 		return $resultado;	
 	}
 
-	function verContacto($conexion,$idContacto){
+	function verContacto($conexionDB,$idContacto){
 		try{
 			$accion = "SELECT * FROM contactos WHERE idContacto =";
 			$sql = $accion ."". $idContacto;
@@ -60,8 +60,8 @@
 				echo "Lo sentimos, este sitio web está experimentando problemas.";
 				echo "Error: La ejecución de la consulta falló debido a: \n";
 				echo "Query: " . $sql . "\n";
-				echo "Errno: " . $conexion->errno . "\n";
-				echo "Error: " . $conexion->error . "\n";
+				echo "Errno: " . $conexionDB->errno . "\n";
+				echo "Error: " . $conexionDB->error . "\n";
 			}
 			//Si es que no se revice valor
 			if ($resultado->num_rows === 0) {
@@ -72,15 +72,15 @@
 			?>
 			<ul>
 				<li>Mensaje: <?php echo $datos["mensaje"] ?></li>
-				<li>Estadp: <?php echo $datos["estado"] ?></li>
+				<li>Estado: <?php echo $datos["estado"] ?></li>
 				<li>Id cliente: <?php echo $datos["idCliente"] ?></li>
 			</ul>
 <?php
 	}
 
-	function eliminaContacto ($conexion, $idContacto){
+	function eliminaContacto ($conexionDB, $idContacto){
 		$sql = "DELETE FROM Contactos WHERE idContacto = '".$idContacto."';";
-		$resultado = $conexion->query($sql);
+		$resultado = $conexionDB->query($sql);
 		$datos = $resultado->fetch_assoc();
 		return $datos;
 	}
