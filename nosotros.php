@@ -94,11 +94,9 @@
 			Fusce pharetra convallis urna. Quisque ut nisi. Donec mi odio, faucibus at, scelerisque quis,
 		</p>
 	</section>
-	<aside style="vertical-align: top;">
-		<div>
-			<iframe src="css/login.html" frameborder="0" scrolling="no" height="382" width="310" title="Login"></iframe>
-		</div>
-	</aside>
+	<?php
+	include "aside.php";
+	?>
     <!-- inicia pie de pagina -->
 	<?php
 

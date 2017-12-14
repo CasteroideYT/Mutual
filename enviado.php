@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Simulador de credito</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/app.css">
+    <meta charset="UTF-8">
+    <title>Simulador de credito</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 <div class="contenedorDiv">
@@ -18,39 +18,44 @@
 	include "navbar.php";
 	?>
     <!--termina navbar-->
-	<section>
-            <?php
+    <section>
+		<?php
+		include "./php/verificaSimulador.php";
+        include "./php/database.php";
+        include "./php/crudSimuladorv2.php";
+        $fecha=getdate();
 
-            if (isset($_POST["rutCliente"],$_POST["nombre"],$_POST["apellido"],$_POST["email"], $_POST["sueldoCliente"],
-                $_POST["montoSolicitado"], $_POST["cuotasCredito"]) && $_POST["interes"]==4) {
-	            $nombre= $_POST["nombre"];
-	            $apellido=$_POST["apellido"];
-	            $email = $_POST["email"];
-	            echo "<h2>Estimado(a) " . $nombre . " " . $apellido . " La informacion se envio a su correo " . $email . "</h2>";
-            }else{
-                ?>
+		if ( datosSimulacion() ) {
+			$rutCliente      = $_POST["rutCliente"];
+			$nombreCliente   = $_POST["nombre"];
+			$apellidoCliente = $_POST["apellido"];
+			$sueldoCliente   = $_POST["sueldoCliente"];
+			$montoSolicitado = $_POST["montoSolicitado"];
+			$cuotasCredito   = $_POST["cuotasCredito"];
+			$interes         = $_POST["interes"];
+			$email           = $_POST["email"];
+			$fono = 0;//TOdo cambiar esto
+ 			//if ( validaRut( $rutCliente ) && validaCorreo( $email ) && numeroCuotas( $cuotasCredito ) && interesPrestamo( $interes )
+			  //   && validaIngreso( $sueldoCliente ) && validaMontoSolicitado( $montoSolicitado ) ) {
+			    creaCliente($conexiondb,$rutCliente,$nombreCliente,$apellidoCliente,$email,$fono);
+                crearSimulacion($conexiondb,$rutCliente,$montoSolicitado,$numeroCuotas,$interes,1,
+                0,0,$fecha);
+				echo "<h2>Estimado(a) " . $nombreCliente . " " . $apellidoCliente . " La informacion se envio a su correo " . $email . "</h2>";
+			} else {
+				?>
                 <h2> Los datos ingresado son incorrectos</h2>
-            <?php
-            }
-            ?>
-	</section>
-	<aside style="vertical-align: top;">
-		<iframe src="css/login.html" frameborder="0" scrolling="no" height="382" width="310" title="Login"></iframe>
-		<img src="img/oferta.jpg" style="align-content: center; height: 190px; width: 190px">
-		<table style="text-align: center; min-width: 190px;">
-			<tr>
-				<td style="text-align: center; min-width: 190px;"> <a href="#">Oferta 01 </a> </td>
-			</tr>
-
-			<tr>
-				<td style="text-align: center; min-width: 190px;"> <a href="#">Oferta 01 </a> </td>
-			</tr>
-
-			<tr>
-				<td style="text-align: center; min-width: 190px;"> <a href="#">Oferta 01 </a> </td>
-			</tr>
-		</table>
-	</aside>
+				<?php
+			}
+		//} else {
+	            ?>
+        <h2>Debe de completar el formulario </h2>
+        <?php
+		//}
+		?>
+    </section>
+	<?php
+	include "aside.php";
+	?>
     <!-- inicia pie de pagina -->
 	<?php
 	include "piepagina.php"

@@ -5,18 +5,19 @@ $nombreCliente = $_POST["nombre"];
 $apellidoCliente = $_POST["apellido"];
 $fonoContacto = $_POST["fonoContacto"];
 $email = $_POST["email"];
-$mensajeConsulta = $_POSt["mensajeConsulta"]
+$mensajeConsulta = $_POSt["mensajeConsulta"];
 
-function datosSimulacion(){
+function datosContacto(){
 	// Valida que se recibiento todos los campos
 	if(isset($_POST["rutCliente"], $_POST["nombre"], $_POST["apellido"],
-		$_POST["mensajeConsulta"], $_POST["email"];)) {
+		$_POST["mensajeConsulta"], $_POST["email"])) {
 		return true;
 	}
 	return false;
 }
 
 function validaRut($rutCliente){
+	$suma = 0;
 	// Valida que el rut sea valido
 	if(strpos($rutCliente,"-")==false){
 		$RUT[0] = substr($rutCliente, 0, -1);
@@ -87,7 +88,7 @@ function validaSoloTexto ($varTexto) {
 		return false;
 	}
 
-	return false
+	return false;
 }
 
 function validaMensaje ($mensajeConsulta){

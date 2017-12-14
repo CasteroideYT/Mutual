@@ -90,23 +90,9 @@
 			</div>
 		</div>
 	</section>
-	<aside style="vertical-align: top;">
-		<iframe src="css/login.html" frameborder="0" scrolling="no" height="382" width="310" title="Login"></iframe>
-		<img src="img/oferta.jpg" style="align-content: center; height: 190px; width: 190px">
-		<table style="text-align: center; min-width: 190px;">
-			<tr>
-				<td style="text-align: center; min-width: 190px;"> <a href="#">Oferta 01 </a> </td>
-			</tr>
-
-			<tr>
-				<td style="text-align: center; min-width: 190px;"> <a href="#">Oferta 01 </a> </td>
-			</tr>
-
-			<tr>
-				<td style="text-align: center; min-width: 190px;"> <a href="#">Oferta 01 </a> </td>
-			</tr>
-		</table>
-	</aside>
+	<?php
+	include "aside.php";
+	?>
     <!-- inicia pie de pagina -->
 	<?php
 
